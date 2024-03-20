@@ -21,5 +21,6 @@ C:\Users\MSI>newman run  "F:\SQA\API testing\Scripting and html report\Scripting
 ## Command source for installation: 
 
 https://github.com/DannyDainton/newman-reporter-htmlextra/blob/main/README.md
+
 https://www.npmjs.com/package/newman-reporter-htmlextra
 
