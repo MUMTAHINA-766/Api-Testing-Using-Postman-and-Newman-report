@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "052ae614-914e-4a88-872a-5ea858c66e2f",
+		"name": "Scripting tutorial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15843413",
+		"_collection_link": "https://crimson-escape-973715.postman.co/workspace/Test-workspace~98a49de5-afd5-416f-aff6-186b57489da5/collection/15843413-052ae614-914e-4a88-872a-5ea858c66e2f?action=share&source=collection_link&creator=15843413"
+	},
+	"item": [
+		{
+			"name": "myFolder",
+			"item": [
+				{
+					"name": "https://reqres.in/api/users?page=2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"userid\", 4);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//multiple assertions\r",
+									"\r",
+									"pm.test(\"multiple field validations in response data\", function(){\r",
+									"    responseJson = pm.response.json();\r",
+									"\r",
+									"     pm.expect(responseJson.data.id).to.eql(4);\r",
+									"     pm.expect(responseJson.data.email).to.eql(\"eve.holt@reqres.in\");\r",
+									"     pm.expect(responseJson.data.first_name).to.eql(\"Eve\");\r",
+									"     pm.expect(responseJson.data.last_name).to.eql(\"Holt\");\r",
+									"     \r",
+									"     pm.expect(responseJson.data.first_name).to.be.a('string');\r",
+									"\r",
+									"     //pm.expect(responseJson.data.id).to.have.lengthOf(1);\r",
+									"\r",
+									"\r",
+									"})\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users/{{userid}}",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{userid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"//console.log(\"This is a folder level Pre-req script\");\r",
+							"// pm.test(\"Status code is 200\", function () {\r",
+							"//    pm.response.to.have.status(200);\r",
+							"// });"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"// console.log(\"This is a folder level test script\");\r",
+							"// pm.test(\"Status code is 200\", function () {\r",
+							"//    pm.response.to.have.status(200);\r",
+							"// });"
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"//console.log('This is a collection level Pre-req script');\r",
+					"// pm.test(\"Status code is 200\", function () {\r",
+					"    \r",
+					"//    pm.response.to.have.status(200);\r",
+					"  \r",
+					"// });"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"// pm.test(\"Status code is 200\", function () {\r",
+					"//     pm.response.to.have.status(200);\r",
+					"// });"
+				]
+			}
+		}
+	]
+}
